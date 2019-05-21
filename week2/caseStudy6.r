@@ -198,13 +198,11 @@ text(locCounts, labels = locCounts[,3], cex = .8, srt = 45)
 par(oldPar)
 dev.off()
 
-
-readData = 
-  function(filename = 'data/offline.final.trace.txt', 
-           subMacs = c("00:0f:a3:39:e1:c0", "00:0f:a3:39:dd:cd", "00:14:bf:b1:97:8a",
+subMacCollection <- c("00:0f:a3:39:e1:c0", "00:0f:a3:39:dd:cd", "00:14:bf:b1:97:8a",
                        "00:14:bf:3b:c7:c6", "00:14:bf:b1:97:90", "00:14:bf:b1:97:8d",
-                       "00:14:bf:b1:97:81"))
-  {
+                       "00:14:bf:b1:97:81")
+readData = function(filename = 'data/offline.final.trace.txt', subMacs = subMacCollection)
+{
     txt = readLines(filename)
     lines = txt[ substr(txt, 1, 1) != "#" ]
     tmp = lapply(lines, processLine)
@@ -392,6 +390,29 @@ xyplot(signal ~ dist | factor(mac) + factor(angle),
 par(oldPar)
 dev.off()
 
+macs = unique(offlineSummary$mac)
+
+summary(offlineSummary$signal)
+summary(offlineSummary$dist)
+
+offset <- 89
+logSignal <- log(offlineSummary$signal + offset)
+logDist <- log(offlineSummary$dist + offset)
+xyplot(logSignal ~ logDist| factor(mac) + factor(angle), 
+       data = offlineSummary, pch = 19, cex = 0.3,
+       xlab ="distance")
+
+#pdf(file="Geo_ScatterSignalDist.pdf", width = 7, height = 10)
+oldPar = par(mar = c(3.1, 3.1, 1, 1))
+library(lattice)
+xyplot(logSignal ~ logDist | factor(mac) + factor(angle), 
+       data = offlineSummary, pch = 19, cex = 0.3,
+       xlab ="distance")
+par(oldPar)
+dev.off()
+
+offlineSummary$logSignal = logSignal
+offlineSummary$logDist = logDist
 macs = unique(offlineSummary$mac)
 
 online = readData("data/online.final.trace.txt", subMacs = macs)
