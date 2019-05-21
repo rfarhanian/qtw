@@ -1,4 +1,6 @@
 
+seed <- 763
+set.seed(seed = seed)
 library(data.table)
 
 options(digits = 2)
@@ -170,7 +172,7 @@ plot(offline$time, offline$orientation, xlab="Time", ylab="Orientation",
 
 plot(offline$time, offline$channel, ylab="Time", xlab="Channel", 
      main="Channel vs. Time Plot", sub="Channel is less variant in March.")
-plot(offline$time, offline$scanMac, xlab="Time", ylab="Signal",
+plot(offline$time, offline$scanMac, xlab="Signal", ylab="Time",
      main="ScanMac vs. Time Plot", sub="ScanMac is less variant in March.")
 
 
@@ -183,7 +185,7 @@ plot(offline$time, offline$posY, ylab="posY", xlab="Time",
 
 
 
-plot(offline$time, offline$posZ, ylab="posZ", xlab="Time",
+plot(offline$time, offline$posZ, ylab="Time", xlab="posZ",
      main="posZ vs. Time Plot", 
      sub="posZ seems to be very limited in variance and volume in March.")
 
@@ -400,14 +402,14 @@ logSignal <- log(offlineSummary$signal + offset)
 logDist <- log(offlineSummary$dist + offset)
 xyplot(logSignal ~ logDist| factor(mac) + factor(angle), 
        data = offlineSummary, pch = 19, cex = 0.3,
-       xlab ="distance")
+       xlab ="logDistance")
 
 #pdf(file="Geo_ScatterSignalDist.pdf", width = 7, height = 10)
 oldPar = par(mar = c(3.1, 3.1, 1, 1))
 library(lattice)
 xyplot(logSignal ~ logDist | factor(mac) + factor(angle), 
        data = offlineSummary, pch = 19, cex = 0.3,
-       xlab ="distance")
+       xlab ="logDistance")
 par(oldPar)
 dev.off()
 
@@ -779,14 +781,7 @@ signalSummary =
            ans
            })
 
-offlineSummary = do.call("rbind", signalSummary)  
-                       
-#-----------------------------------------
-# We plot the offlineSummary data and observe that the weakest signals have small standard deviations and that 
-# it appears that the SD increases with the average signal strength. If we plan to model the behavior of signal 
-# strength, then we want to take these features into consideration. The weak signals have low variability and 
-# the stronger signals have greater variability. 
-#-----------------------------------------                       
+offlineSummary = do.call("rbind", signalSummary)                         
 
 oldPar = par(mar = c(3.1, 3, 1, 1))
 
@@ -798,14 +793,7 @@ bwplot(sdSignal ~ cut(avgSignal, breaks = breaks),
 
 par(oldPar)
 dev.off()   
-                       
-                       
-#-----------------------------------------
-# We examine the skewness of signal strength by plotting the difference, avgSignal - medSignal, against the number
-# of observations. Then we use the fitted model to predict the difference for each value of num and add 
-# these predictions to the scatter plot. We see that these two measures of centrality are similar to each other; 
-# they typically differ by less than 1 to 2 dBm.                       
-#-----------------------------------------                       
+                                          
                                            
 oldPar = par(mar = c(4.1, 4.1, 1, 1))
 
@@ -841,23 +829,7 @@ vizSmooth = predictSurface(smoothSS)
 
 plot.surface(vizSmooth, type = "C")
 
-points(oneAPAngle$posX, oneAPAngle$posY, pch=19, cex = 0.5)
-                       
-
-#-----------------------------------------
-# we see that we can easily identify the location of the access point as the dark red region at the top of 
-# the “mountain.” We also confirm the effect of the orientation on signal strength. Additionally, a corridor 
-# effect emerges. The signal is stronger relative to distance along the corridors where the signals are not 
-# blocked by walls. We know the locations of the access points based on the floor plan of the building, but we have
-# not been given their exact location and we do not know the mapping between MAC address and access point. 
-# Fortunately, the contour maps that we just created make it easy to connect the MAC address to the access point 
-# marked on the floor plan in figure 1.1. For example, the signals appearing in the top row of the plot 
-# clearly correspond to the access point in the top left corner of the building. Also, according to the 
-# documentation, the training data were measured at 1 meter intervals in the building so we can use the grey dots
-# on the plan to estimate the location of the access points. We find that two MAC addresses have similar heat 
-# maps and these both correspond to the access point near the center of the building (i.e., x = 7.5 and y = 6.3).
-#-----------------------------------------                                                                      
-#-----------------------------------------                         
+points(oneAPAngle$posX, oneAPAngle$posY, pch=19, cex = 0.5)                      
 
 unique(offlineSummary$mac)
                        
@@ -1060,7 +1032,7 @@ trainPoints = offlineSummary[ offlineSummary$angle == 0 &
                               offlineSummary$mac == "00:0f:a3:39:dd:cd" ,
                         c("posX", "posY")]                                    
 
-pdf(file="GEO_FloorPlanK3Errors.pdf", width = 10, height = 7)
+# pdf(file="GEO_FloorPlanK3Errors.pdf", width = 10, height = 7)
 oldPar = par(mar = c(1, 1, 1, 1))
 floorErrorMap(estXYk3, onlineSummary[ , c("posX","posY")], 
               trainPoints = trainPoints, AP = AP)
@@ -1083,6 +1055,7 @@ sapply(list(estXYk1, estXYk3), calcError, actualXY)
 
                                     
 
+set.seed(seed = seed)
 v = 11
 permuteLocs = sample(unique(offlineSummary$posXY))
 permuteLocs = matrix(permuteLocs, ncol = v, 
@@ -1150,6 +1123,7 @@ for (j in 1:v) {
   }
 }
 
+set.seed(seed = seed)
 plot(y = err, x = (1:K),  type = "l", lwd= 2,
      ylim = c(100, 2100),
      xlab = "Number of Neighbors",
@@ -1171,6 +1145,7 @@ estXYk5 = predXY(newSignals = onlineSummary[ , 6:11],
 
 calcError(estXYk5, actualXY)
 
+set.seed(seed = seed)
 subMacs = c("00:0f:a3:39:e1:c0", "00:0f:a3:39:dd:cd", "00:14:bf:b1:97:8a",
                        "00:14:bf:3b:c7:c6", "00:14:bf:b1:97:90", "00:14:bf:b1:97:8d",
                        "00:14:bf:b1:97:81")
@@ -1401,6 +1376,7 @@ for (j in 1:v) {
   }
 }                                                      
 
+set.seed(seed = seed)
 plot(y = err, x = (1:K),  type = "l", lwd= 2,
      ylim = c(100, 2100),
      xlab = "Number of Neighbors",
@@ -1422,21 +1398,165 @@ estXYk5 = predXY(newSignals = onlineSummary[ , 6:11],
 
 calcError(estXYk5, actualXY)
 
-findNN = function(newSignal, trainSubset, numberOfAccessPoints, algorithmFunction) {
-  diffs = apply(trainSubset[ , 4:9], 1, function(x) x - newSignal)  
-  return (apply(diffs, trainSubset, numberOfAccessPoints, algorithmFunction)) 
-}
+set.seed(seed = seed)
+subMacs = c("00:0f:a3:39:e1:c0", "00:0f:a3:39:dd:cd", "00:14:bf:b1:97:8a",
+                       "00:14:bf:3b:c7:c6", "00:14:bf:b1:97:90", "00:14:bf:b1:97:8d",
+                       "00:14:bf:b1:97:81")
+filteredAccessPoint = "00:0f:a3:39:e1:c0"
+usedAccessPoints = subMacs[subMacs != filteredAccessPoint] 
+offlineRedo = readData()
 
-averageKnnFunction = function(dists, trainSubset, numberOfAccessPoints) {
-  dists = apply(diffs, 2, function(x) sqrt(sum(x^2)) )
-  closest = order(dists) 
-  return (trainSubset[closest, 1:numberOfAccessPoints ]) 
-}                   
-                
-weightedKnnFunction = function(diffs, trainSubset, numberOfAccessPoints) {
+oldPar = par(mar = c(3.1, 3, 1, 1))
+
+offlineRedo$posXY = paste(offlineRedo$posX, offlineRedo$posY, sep = "-")
+
+byLocAngleAP = with(offlineRedo, 
+                    by(offlineRedo, list(posXY, angle, mac), 
+                       function(x) x))
+
+signalSummary = 
+  lapply(byLocAngleAP,            
+         function(oneLoc) {
+           ans = oneLoc[1, ]
+           ans$medSignal = median(oneLoc$signal)
+           ans$avgSignal = mean(oneLoc$signal)
+           ans$num = length(oneLoc$signal)
+           ans$sdSignal = sd(oneLoc$signal)
+           ans$iqrSignal = IQR(oneLoc$signal)
+           ans
+           })
+
+offlineSummary = do.call("rbind", signalSummary)                         
+
+keepVars = c("posXY", "posX","posY", "orientation", "angle")
+
+onlineCVSummary = reshapeSS(offlineRedo, keepVars = keepVars, 
+                            sampleAngle = TRUE)
+
+onlineFold = subset(onlineCVSummary, 
+                    posXY %in% permuteLocs[ , 1])
+
+offlineFold = subset(offlineSummary,
+                     posXY %in% permuteLocs[ , -1])
+
+estFold = predXY(newSignals = onlineFold[ , 6:11], 
+                 newAngles = onlineFold[ , 4], 
+                 offlineFold, numAngles = 3, k = 3)
+
+actualFold = onlineFold[ , c("posX", "posY")]
+calcError(estFold, actualFold)
+
+K = 20
+err = rep(0, K)
+
+for (j in 1:v) {
+  onlineFold = subset(onlineCVSummary, 
+                      posXY %in% permuteLocs[ , j])
+  offlineFold = subset(offlineSummary,
+                       posXY %in% permuteLocs[ , -j])
+  actualFold = onlineFold[ , c("posX", "posY")]
+  
+  for (k in 1:K) {
+    estFold = predXY(newSignals = onlineFold[ , 6:11],
+                     newAngles = onlineFold[ , 4], 
+                     offlineFold, numAngles = 3, k = k)
+    err[k] = err[k] + calcError(estFold, actualFold)
+  }
+}                       
+macs = unique(offlineSummary$mac)    
+macs                       
+
+
+findNN = function(newSignal, trainSubset) {
+  diffs = apply(trainSubset[ , 4:9], 1, 
+                function(x) x - newSignal)
   dists = apply(diffs, 2, function(x) sqrt(sum(x^2)) )
   closest = order(dists)
-  closeXY = trainSubset[closest, 1:numberOfAccessPoints ]
-  weight = as.numeric(1/dists[closest]) 
-  return (cbind(closeXY, weight)) 
-}                                       
+  return(list(trainSubset[closest, 1:3 ], dists[order(dists)]))
+}
+
+set.seed(seed = seed)
+predXY = function(newSignals, newAngles, trainData, numAngles = 1, k = 3){
+  
+  closeXY = list(length = nrow(newSignals))
+  closeDist = list(length = nrow(newSignals))
+  
+  for (i in 1:nrow(newSignals)) {
+    trainSS = selectTrain(newAngles[i], trainData, m = numAngles)
+    fnnResult = findNN(newSignal = as.numeric(newSignals[i, ]), trainSS)
+  
+    closeXY[[i]] = fnnResult[[1]]
+    closeDist[[i]] = fnnResult[[2]]
+  }
+  
+  distWeight = list(length = length(closeDist))
+  
+  for (i in 1:length(closeDist)){
+    distW = list(length = k)
+
+    for (j in 1:k){
+      distW[j] = (1/closeDist[[i]][j])/sum(1/closeDist[[i]][1:k])
+    }
+     
+    distWeight[[i]] =  distW
+  }
+
+  estXYDetails = list(length=length(closeXY))
+  
+  for(i in 1:length(closeXY)){
+    estXYDetails[[i]] = as.matrix(closeXY[[i]][1:k,2:3]) * unlist(distWeight[[i]])
+  }
+  
+  estXY = lapply(estXYDetails,
+                 function(x) apply(x, 2,
+                                   function(x) sum(x)))
+    
+  estXY = do.call("rbind", estXY)
+  return(estXY)
+}
+                                   
+K = 20
+err = rep(0, K)
+
+for (j in 1:v) {
+  onlineFold = subset(onlineCVSummary, 
+                      posXY %in% permuteLocs[ , j])
+  offlineFold = subset(offlineSummary,
+                       posXY %in% permuteLocs[ , -j])
+  actualFold = onlineFold[ , c("posX", "posY")]
+  
+  for (k in 1:K) {
+    estFold = predXY(newSignals = onlineFold[ , 6:11],
+                     newAngles = onlineFold[ , 4], 
+                     offlineFold, numAngles = 3, k = k)
+    err[k] = err[k] + calcError(estFold, actualFold)
+  }
+} 
+                                   
+oldPar = par(mar = c(4, 5, 1, 1))
+plot(y = err, x = (1:K),  type = "l", lwd= 2,
+     ylim = c(1200, 1800),
+     xlab = "Number of Neighbors",
+     ylab = "Sum of Square Errors")
+rmseMin = min(err)
+kMin2 = which(err == rmseMin)[1]
+segments(x0 = 0, x1 = kMin2, y0 = rmseMin, col = gray(0.4), 
+         lty = 2, lwd = 2)
+segments(x0 = kMin2, x1 = kMin2, y0 = 900,  y1 = rmseMin, 
+         col = grey(0.4), lty = 2, lwd = 2)
+
+mtext(kMin2, side = 1, line = 1, at = kMin2, col = grey(0.4))
+text(x = kMin2 - 2, y = rmseMin + 40, 
+     label = as.character(round(rmseMin)), col = grey(0.4))
+par(oldPar)                                   
+
+set.seed(seed = seed)
+estXYk8 = predXY(newSignals = onlineSummary[ , 6:11], 
+                 newAngles = onlineSummary[ , 4], 
+                 offlineSummary, numAngles = 4, k = 4)
+
+calcError(estXYk8, actualXY)
+
+oldPar = par(mar = c(1, 1, 1, 1))
+par(oldPar)
+floorErrorMap(estXYk8, onlineSummary[ , c("posX","posY")], trainPoints = trainPoints, AP = AP)
