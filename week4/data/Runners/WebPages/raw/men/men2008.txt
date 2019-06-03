@@ -1,0 +1,383 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125429987-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125429987-1');
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta property="og:image" content="http://www.cherryblossom.org/images/2018/cucb2.jpg" />
+<title>Credit Union Cherry Blossom</title>
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<meta id="p7PM3" name="viewport" content="width=device-width" />
+<link href="/inc/p7pm3/p7PM3-01.css" rel="stylesheet" type="text/css" media="all" />
+<link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet"> 
+<script type="text/javascript" src="/inc/p7pm3/p7PM3scripts.js"></script>
+<script type="text/javascript" src="/inc/countdownmulti.js" defer></script>
+<link rel="stylesheet" href="/slider.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/scripts/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery.easing.1.2.js"></script>
+<script src="/scripts/jquery.anythingslider.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+        function formatText(index, panel) {
+    		  return index + "";
+    	  };
+        $(function () {
+        
+            $('.anythingSlider').anythingSlider({
+                easing: "easeInOutExpo",        // Anything other than "linear" or "swing" requires the easing plugin
+                autoPlay: true,                 // This turns off the entire FUNCTIONALY, not just if it starts running or not.
+                delay: 3000,                    // How long between slide transitions in AutoPlay mode
+                startStopped: false,            // If autoPlay is on, this can force it to start stopped
+                animationTime: 600,             // How long the slide transition takes
+                hashTags: true,                 // Should links change the hashtag in the URL?
+                buildNavigation: true,          // If true, builds and list of anchor links to link to each slide
+            		pauseOnHover: true,             // If true, and autoPlay is enabled, the show will pause on hover
+            		startText: "Go",                // Start text
+    		        stopText: "Stop",               // Stop text
+    		        navigationFormatter: formatText // Details at the top of the file on this use (advanced use)
+            });
+            
+            $("#slide-jump").click(function(){
+                $('.anythingSlider').anythingSlider(6);
+            });
+            
+        });
+    </script>
+<script type="text/javascript" src="/scripts/jquery.simplyscroll.js"></script>
+<link rel="stylesheet" href="/simplyscroll.css" media="all" 
+type="text/css">
+
+<script type="text/javascript">
+(function($) {
+	$(function() { //on DOM ready
+		$("#scroller").simplyScroll({
+			autoMode: 'loop'
+		});
+	});
+})(jQuery);
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41933428-1', 'cherryblossom.org');
+  ga('send', 'pageview');
+
+</script><meta scheme="countdown1" name="event_msg" content="The Lottery Is Closed!">
+
+<meta scheme="countdown2" name="event_msg" content="The Race Is On!">
+
+</head>
+<body id="homepage">
+<div id="wrapperpage">
+<div id="header">
+ <div id="social"><br /><a href="https://www.instagram.com/cucb/" target="_blank"><img src="/images/2017/insta_text_blue.jpg" width="75" height="29" border="0" /></a>&nbsp; <a href="http://twitter.com/CUCB" target="_blank"><img src="/images/twitter.gif" width="75" height="29" border="0" /></a>&nbsp; <a href="http://www.facebook.com/pages/Credit-Union-Cherry-Blossom-Ten-Mile-Run/158596577506334" target="_blank"><img src="/images/facebook.gif" width="75" height="29" border="0" /></a><br />
+ &nbsp;<br>
+<a href="http://www.prro.org" target="_blank"><img src="http://www.cherryblossom.org/images/prrogif.gif" alt="PRRO Circuit" width="130" height="71" border="0"/></a></div>
+<div id="logo">
+    &nbsp;<br />
+    <a href="/index.php"><img src="/images/2013/cucblogo.jpg" alt="Cherry Blossom Ten Mile Run" width="177" height="187" align="right" /></a>
+  </div>
+<div id="title"><p id="cu">Credit Union</p>
+<p id="cb">Cherry Blossom</p>
+<p id="tmr">Ten Mile Run & 5K Run-Walk</p>
+</div>
+<div id="cucbdate"><span class="textltyellow"><strong>April 7, 2019&nbsp;in Washington, D.C at 7:30 A.M.</strong></span>
+<em><strong><span class="textpink">&quot;The Runner's Rite of Spring&quot;&reg;</span></strong></em></div> 
+</div><!-- end header -->
+<div class="clearfloat"></div>
+<div id="wrappercontent">
+<div id="menu"><a href="https://www.helpmakemiracles.org/index.cfm?fuseaction=donorDrive.event&eventID=2567" target="_blank"><img src="/images/2017/cmn_fund.gif" alt="Support Children's Miracle Network" width="180" height="76" hspace="15" /></a>
+<div id="p7PM3_1" class="p7PM3-01 p7PM3 p7PM3noscript vert responsive auto-subs">
+  <div id="p7PM3tb_1" class="pmm3-toolbar closed"><a href="#" title="Hide/Show Menu">&equiv;</a></div>
+  <ul><h1>THE RACES</h1>
+    <li><a href="/theraces/tenmile.php">10 Mile Run</a>
+      <ul>
+        <li><a href="/theraces/tenmile.php">Race Information</a></li>
+        <li><a href="/generalinfo/athletetracking.php">Athlete Tracking</a></li>
+        <li><a href="../theraces/elitebios.php">Elite Athlete Bios</a></li>
+        <li><a href="/generalinfo/entryinfo.php">Entry Procedures</a></li>
+        <li><a href="/theraces/pacegroups.php">Gold's Gym Pace Groups</a></li>
+        <li><a href="/theraces/10mawards.php">Prize Money/Awards</a></li>
+        <li><a href="/theraces/elite.php">Elite/Seeded Runner Info</a>        
+            <li><a href="/theraces/drugtesting.php">Drug Testing of Elite Athletes</a></li>
+            <li><a href="/theraces/advancestart.php">Advance Start for Women</a></li>
+          
+        <li><a href="/theraces/trainingprograms.php">Training/Education</a></li>
+        <li><a href="/theraces/tshirt.php">T-Shirts and Amenities</a></li>
+        <li><a href="../images/2016/16MYLAPS_BibTag_Instructions.pdf" target="_blank">MYLAPS Bib Tag Instructions</a></li>
+        <li><a href="../theraces/switch_form.php" target="_blank">Switch from 10 Mile to 5K</a></li>
+      </ul>
+    </li>
+    <li><a href="/theraces/5krunwalk.php">5K Run-Walk</a></li>
+    <li><a href="/theraces/kidsrun.php">Kids' Run</a></li>
+<h1>RACE RESULTS </h1>
+<li><a href="/aboutus/results.php">Race Results</a>
+      <ul>
+        <li><a href="http://www.cballtimeresults.org" target="_blank">Searchable Results (1973-2018)</a></li>
+        <li><a href="/aboutus/runpix.php">RunPix Enhanced Results</a></li>
+        <li><a href="../aboutus/results2019.php">2019 Results</a></li>
+        <li><a href="/aboutus/results2018.php">2018 Results</a></li>
+        <li><a href="/aboutus/results2017.php">2017 Results</a></li>
+        <li><a href="/aboutus/results2016.php">2016 Results</a></li>
+        <li><a href="/aboutus/results2015.php">2015 Results</a></li>
+        <li><a href="/aboutus/results2014.php">2014 Results</a></li>
+        <li><a href="/aboutus/results_list.php">Results from 2013-1999</a>        
+      </ul>
+    </li>
+<h1>GENERAL INFORMATION </h1>
+    <li><a href="/theraces/attherace.php">At the Race</a></li>
+    <li><a href="/theraces/aftertherace.php">After the Race</a></li>
+    <li><a href="/generalinfo/thebasics.php">The Basics</a>
+      
+    </li>
+    <li><a href="/generalinfo/bagcheck.php">Bag Check</a></li>
+    <li><a href="/generalinfo/technology.php">Download the Race App</a></li>
+    <li><a href="/theraces/elite.php">Elite/Seeded Runner Qualifying</a></li>
+    <li><a href="/generalinfo/entryinfo.php">Entry Information</a>
+      <ul>
+        <li><a href="/generalinfo/entryinfo.php">Entry Information</a></li>
+        <li><a href="/generalinfo/entry_charity.php">Charity Entries</a></li>
+      </ul>
+    </li>
+    <li><a href="/generalinfo/packetpickup.php">Expo/Packet Pickup Info</a>
+      <ul>
+        <li><a href="/generalinfo/packetpickup.php">Health and Fitness Expo Details</a></li>
+        <li><a href="/generalinfo/pickupother.php">Picking Up Another's Packet</a></li>
+        <li><a href="/generalinfo/clinic_sched.php">Clinic Schedule</a></li>
+        <li><a href="/generalinfo/exhibitorinfo.php">Exhibitor Information</a></li>
+        <!--li><a href="/generalinfo/exhibitorconditions.php">Exhibitor Terms and Conditions</a></li-->
+        <!--li><a href="https://www.cherryblossomexpo.org" target="_blank">Exhibitor Reservation Form</a></li-->
+      </ul>
+    </li>
+    
+    <li><a href="/generalinfo/faq.php">FAQ</a></li>
+    <li><a href="/generalinfo/gettingtorace.php">Getting to the Race</a></li>
+    <li><a href="http://www.cherryblossom.org/generalinfo/leavingrace.php">Leaving the Race</a></li>
+    <li><a href="/generalinfo/racedaymaps.php">Maps</a></li>
+    <li><a href="/generalinfo/medinstruc.php">Medical Instructions</a></li>
+    <li><a href="/aboutus/fundraising_runfor_children.php">Run for Children</a></li>
+    <li><a href="/theraces/switch_form.php" target="_blank">Switch Races</a></li>
+    <li><a href="/generalinfo/teamcompete.php">Team Competition</a>
+      <ul>
+        <li><a href="/generalinfo/teamcompete.php">Team Competition</a></li>
+        <li><a href="/generalinfo/teamentryform.php">Team Entry Process</a></li>
+        <li><a href="/generalinfo/teamcomposition.php">Team Composition</a></li>
+        <li><a href="/generalinfo/teamscoring.php">Team Scoring and Awards</a></li>
+        <li><a href="/generalinfo/teampubresults.php">Published Team Results</a></li>
+        <li><a href="/generalinfo/teampacketpu.php">Team Packet Pick-up, Corrections, and Substitutions</a></li>
+        <li><a href="/generalinfo/teamcoordinator.php">Contact the Team Coordinator</a></li>
+      </ul>
+    </li>
+    <li><a href="/generalinfo/technology.php">Technology</a></li>
+    <li><a href="/generalinfo/transfernumbers.php">Transfer of Numbers</a></li>
+    <li><a href="/theraces/trainingprograms.php">Training/Education</a></li>
+    <li><a href="/generalinfo/travel.php">Travel/Hotel/Dining</a>
+      <ul>
+        <li><a href="/generalinfo/hotel.php">Hotel Information</a></li>
+        <li><a href="/generalinfo/dining.php">Dining Information</a></li>
+        <li><a href="/generalinfo/ncbf.php">National Cherry Blossom Festival</a></li>
+      </ul>
+    </li>
+    <li><a href="/generalinfo/volunteer.php">Volunteer</a>
+      <ul>
+        <li><a href="/generalinfo/volunteer.php">Volunteer Information and Signup</a></li>
+        <li><a href="/generalinfo/volunteercontact.php">Volunteer Contact</a></li>
+      </ul>
+    </li>
+<h1>ABOUT US</h1>
+    <li><a href="/aboutus/cumd.php">Credit Union Miracle Day</a></li>
+    <li><a href="/aboutus/environment.php">Sustainability</a>
+      <ul>
+        <li><a href="/aboutus/environment.php">Sustainability</a></li>
+        <li><a href="../aboutus/environment_expo.php">Exhibitor Sustainability Requirements</a></li>
+        <li><a href="/images/2016/2015_Sustainability_Report_web.pdf" target="_blank">Sustainability Report</a></li>
+        <li><a href="/generalinfo/shoedonations.php">Shoe Donations</a></li>
+        <li><a href="/images/2017/10_Steps.pdf" target="_blank">10 Steps to Becoming a Greener Runner</a></li>
+        <li><a href="/aboutus/carbonoffsets.php">Carbon Offsets</a></li>
+        <li><a href="/aboutus/bicyclevalet.php">Bicycle Parking Area</a></li>
+      </ul>
+    </li>
+    <li><a href="/aboutus/honorary_chairs.php">Honorary Race Chairs</a></li>
+    <li><a href="../generalinfo/merchandise.php">Merchandise</a>
+      <!--ul>
+        <li><a href="../merchandise/2013/merchandise13.php">Merchandise</a></li>
+        <li><a href="http://www.cherryblossom.org/generalinfo/additional_items.php">Order Additional Items</a></li>
+      </ul-->
+    </li>
+    <li><a href="/aboutus/pressreleases.php">Press Releases/Media</a>
+      <ul>
+        <li><a href="/aboutus/pr2019.php">2019 Press Releases</a></li>
+        <li><a href="/aboutus/pr2018.php">2018 Press Releases</a></li>
+        <li><a href="/aboutus/pr2017.php">2017 Press Releases</a></li>
+        <li><a href="/aboutus/pr2016.php">2016 Press Releases</a></li>
+        <li><a href="/aboutus/pr2015.php">2015 Press Releases</a></li>
+        <li><a href="/aboutus/pr2014.php">2014 Press Releases</a></li>
+        <li><a href="/aboutus/pr2013.php">2013 Press Releases</a></li>
+        <li><a href="/aboutus/pr2012.php">2012 Press Releases</a></li>
+        <li><a href="/aboutus/pr2011.php">2011 Press Releases</a></li>
+        <li><a href="/aboutus/pr2010.php">2010 Press Releases</a></li>
+        <li><a href="/aboutus/mediacontacts.php">Media Contacts</a></li>
+        <li><a href="/aboutus/18mediaguide.php">2018 Media Guide</a></li>
+        <li><a href="/theraces/elitebios.php">Elite Athlete Bios</a></li>
+      </ul>
+    </li>
+    <li><a href="/aboutus/photogalleries.php">Photo/Video Galleries</a>    </li>
+    <li><a href="/aboutus/racecommittee.php">Race Committee</a></li>
+    <li><a href="/aboutus/sponsorships.php">Sponsorships</a></li>
+    <li><a href="/aboutus/alliedorgs.php">Allied Organizations</a></li>
+    <li><a href="http://www.cherryblossom.org/art_design.php">Call for T-Shirt Art Design</a></li>
+    <li><a href="/contactus.php">Contact Us</a></li>
+    <li><a href="/index.php">Home</a></li>
+  </ul>
+  <script type="text/javascript">P7_PM3op('p7PM3_1',0,2,-5,-5,0,1,0,1,0,1,1,1,0,900,1,0,0)</script>
+</div></div><!--end of menu -->
+<div id="content">
+<div class="dg-countdown1">Race Lottery Status <span id="countdown1">2019-12-1 3:59:00 GMT-05:00</span></div>
+<div class="dg-countdown2">Countdown to Race Day <span id="countdown2">2020-04-05 7:30:00 GMT-05:00</span></div>
+<p style="clear:both;line-height:.5em;">&nbsp;</p>
+
+  <div class="anythingSlider">
+      <div class="wrapper">
+            <ul><li><a href="http://www.cherryblossom.org/aboutus/results.php"><img src="images/featuredcontent/2019/19results.jpg" width="690" height="268" alt=""/></a><br />
+              <a href="http://www.cherryblossom.org/aboutus/results.php">2019 Race Results</a></li> 
+			  <li><a href="http://www.runpix.co/arace11/61/chy19/rp.php" target="_blank"><img src="images/featuredcontent/2017/runpix.jpg" alt="" width="690" height="268"/></a><br />
+              <a href="http://www.runpix.co/arace11/61/chy19/rp.php" target="_blank">2019 RunPix Graphical Results</a></li> 
+			<li><a href="https://visitor.r20.constantcontact.com/manage/optin?v=0019_l7KhBeOJcde82GJK4LTeuH0491SjchNkSvpdqbNboFi-3H73Ue7_BxwCvbKpRJK6TcI5XRNZITN3aya-4nKW_tS9P5TBOu8qOIkwue3mqZHn1hMNvcGGTgjUSJAqDdemgyiEYiAqnWB9UeTdmHIUY2YgePmbgiXvEIBv8McNYamPNVpw3KHnmVcnwQya4HNgG_1F0Zq6I%3D"><img src="images/featuredcontent/2017/lottery.jpg" alt="" width="690" height="268"/></a><br />
+              <a href="https://visitor.r20.constantcontact.com/manage/optin?v=0019_l7KhBeOJcde82GJK4LTeuH0491SjchNkSvpdqbNboFi-3H73Ue7_BxwCvbKpRJK6TcI5XRNZITN3aya-4nKW_tS9P5TBOu8qOIkwue3mqZHn1hMNvcGGTgjUSJAqDdemgyiEYiAqnWB9UeTdmHIUY2YgePmbgiXvEIBv8McNYamPNVpw3KHnmVcnwQya4HNgG_1F0Zq6I%3D">Sign Up to Be Notified of the Opening of the 2020 Race Lottery</a></li>	
+             <li><a href="generalinfo/racephotos.php"><img src="images/featuredcontent/2019/marathonphotos.jpg" alt="" width="690" height="268"/></a><br />
+              <a href="generalinfo/racephotos.php">Participant Photos From Marathon Photos</a></li>
+             
+             <li><a href="generalinfo/tshirt_medal_details.php"><img src="images/featuredcontent/2019/tshirts_medals19.jpg" width="690" height="268" alt=""/></a><br />
+				  
+              <a href="generalinfo/tshirt_medal_details.php">Click for Info on Getting T-Shirts and Medals</a></li>
+
+   <li><a href="aboutus/19mediaguide.php"><img src="images/featuredcontent/2019/media_guide.jpg" alt="" width="690" height="268"/></a><br />
+              <a href="aboutus/19mediaguide.php">2019 Media Guide</a></li>
+				 
+         
+           
+
+			 
+          
+				
+			  
+          </ul>          
+      </div>  
+      </div> 
+ 
+ 
+<p style="clear:both;line-height:.5em;">&nbsp;</p>
+
+
+<div style="float:right;width:217px;margin-right:40px;"><a href="https://www.helpmakemiracles.org/index.cfm?fuseaction=donorDrive.event&amp;eventID=2567"><img src="images/2018/cmn_217.gif" alt="Children's Miracle Network" width="217" height="281" border="0"></a>
+   </div>
+
+<!-- start the latest news --><div id="thelatestnews">
+
+	<h1>The Latest News	</h1>
+	<p></p>
+<a href="http://www.runpix.co/arace11/61/chy19/rp.php" target="_blank"><img src="images/2019/runpix.gif" width="200" height="30" alt=""/></a>
+  
+  
+<ul id="latestnews" style="margin-bottom:2em;">
+		<li><a href="aboutus/results.php">2019 Race Results Are Now Official</a></li>
+		<li><a href="http://www.cherryblossom.org/aboutus/running_series_broadcasts.php">Cherry Blossom Race on <em>RUNNING - </em>Click for Airtimes</a></li>
+		<li><a href="http://www.cherryblossom.org/aboutus/photogalleries.php">PHOTOS: Lots of New Photo Albums Just Added!</a></li>
+		<li><a href="generalinfo/tshirt_medal_details.php">All About T-Shirts and Medals</a></li>
+		<li><a href="https://youtu.be/oq5lTyScnEs" target="_blank">VIDEO: Race Highlights</a></li>
+	
+		<li><a href="generalinfo/racephotos.php">Participant Race Photos from Marathon Photos</a></li>
+		<li><a href="http://www.runpix.co/arace11/61/chy19/rp.php" target="_blank">RunPix Graphical Results</a></li>
+			
+	
+	<li><a href="https://visitor.r20.constantcontact.com/manage/optin?v=0019_l7KhBeOJcde82GJK4LTeuH0491SjchNkSvpdqbNboFi-3H73Ue7_BxwCvbKpRJK6TcI5XRNZITN3aya-4nKW_tS9P5TBOu8qOIkwue3mqZHn1hMNvcGGTgjUSJAqDdemgyiEYiAqnWB9UeTdmHIUY2YgePmbgiXvEIBv8McNYamPNVpw3KHnmVcnwQya4HNgG_1F0Zq6I%3D" target="_blank">Signup for 2020 Lottery Notification</a></li>
+	<li><a href="aboutus/19mediaguide.php">2019 Media Guide</a></li>
+		<li><a href="aboutus/atsd.php">1973-2018 Searchable Results Database</a></li>
+	<li><a href="http://www.cherryblossom.org/generalinfo/emails.php">Make Sure You Receive Our Emails</a></li>
+	</ul>
+</div> <!--end thelatestnews -->
+<div align="center"><iframe width="560" height="315" src="https://www.youtube.com/embed/oq5lTyScnEs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p>
+<div style="width:315px;float:right;margin-left:1em;">
+<map name="FPMap0">
+<area target="_blank" coords="-56,278,138,317" shape="rect" href="http://www.asmarterchoice.org/">
+<area target="_blank" coords="139,278,333,315" shape="rect" href="http://culookup.com/">
+</map>
+<map name="FPMap0">
+<area target="_blank" coords="38, 237, 232, 276" shape="rect" href="http://www.asmarterchoice.org/">
+<area target="_blank" coords="40, 275, 234, 312" shape="rect" href="http://culookup.com/">
+</map><img src="images/2018/CUMD-web-1.jpg" width="255" height="314" usemap="#FPMap0" style="margin-left:1em;border: 1px solid #003;">
+</div>
+
+<div style="width:365px;height:285px;margin-right:2em;padding-top:2em;border-top:2px solid #304588;border-bottom:2px solid #304588;">
+<h1 class="aligncenter">Credit Union Cherry Blossom <br />
+    Ten Mile Run Merchandise</h1><p>
+<p align="center"><a href="generalinfo/merchandise.php"><img src="merchandise/2019/Women_Cold_Gear_UA_Half_Zip_home.jpg" alt="Race Merchandise" width="131" height="166" border="0"></a><br />    
+</p>
+<p align="center" class="style1"><a href="generalinfo/merchandise.php">2019 Under Armour Merchandise Now Available!</a></p>
+</div>
+<p style="clear:both;line-height:3em;">&nbsp;</p>
+<div style="text-align:center;"><a href="http://www.rrca.org/" target="_new"><img src="http://www.cherryblossom.org/images/2017/homepage-rrca.gif" width="73" height="106" border="0" align="middle" /></a> &nbsp;&nbsp;   &nbsp; &nbsp;&nbsp;   &nbsp; &nbsp; &nbsp; <a href="http://www.cherryblossom.org/aboutus/pr2016/release_jan1116.php" target="_new"><img src="http://www.cherryblossom.org/images/2017/Inspire_Gold_Seal_sm.jpg" width="110" height="109" border="0" align="middle" /></a> &nbsp;&nbsp;   &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; <a href="http://www.nationalcherryblossomfestival.org/" target="_new"><img src="http://www.cherryblossom.org/images/2017/homepage-ncbf.gif" width="111" height="111" border="0" align="middle" /></a>&nbsp; &nbsp; &nbsp;&nbsp;   &nbsp; &nbsp;&nbsp;&nbsp; <a href="http://www.usatf.org/" target="_new"><img src="http://www.cherryblossom.org/images/2017/homepage-usatf.gif" width="114" height="110" border="0" align="middle" /></a></div>
+
+<p class="clearfloat">
+  </p>
+ 
+</div>
+<!-- div id="sidebar"><!-- ?php include($_SERVER['DOCUMENT_ROOT'] . "../inc/sidebar2.php"); ?>
+</div><!--end of sidebar -->
+</div><!-- end wrappercontent -->
+</div>
+<!--end of wrapperpage -->
+<div id="footer"><img src="/images/footer.jpg" width="1020" height="20" />
+    <table width="100%" border="0">
+      <tr>
+        <td><p align="center" style="color:#6a6e76;font-size:12px;margin-bottom:5px">Thanks to our Sponsors</p><ul id="scroller">
+	
+	
+	<li><a href="http://www.baroodycamps.com" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2018/baroody.jpg" width="202" height="52" alt=""/></a></li>
+			<li><a href="http://www.cucherryblossomrun.org" target="_blank"><img src="/images/ads/2016/cumd16_b.jpg" width="202" height="52" border="0"></a></li>
+			<li><a href="https://www.262brew.com/"><img src="../images/ads/2019/26.2_logo_bl.jpg" width="202" height="52" alt=""/></a></li>
+	
+			<li><a href="https://www.cabotcheese.coop/"><img src="../images/ads/2015/cabot_b.gif" width="202" height="52" alt=""/></a>    
+	<li><a href="http://www.etrade.com"><img src="http://www.cherryblossom.org/images/ads/etrade_b.jpg" alt="" width="202" height="52"/></a>
+	  
+	  
+	  <li><a href="http://www.garmin.com" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2018/garmin.jpg" width="202" height="52" alt=""/></a></li>
+		<li><a href="http://www.gatorade.com/default.aspx#product?s=gseriespro-perform-enduranceformula-readytodrink" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2014/gatorade_b.jpg" width="202" height="52" border="0"></a></li>
+          <li><a href="https://www.goldsgym.com/ilg/free-pass/" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2019/golds_new19_b.jpg" width="202" height="52" border="0"></a></li>
+          <li><a href="https://www.honeystinger.com/" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2019/honey_stinger_new_bl.jpg" width="202" height="52" alt=""/></a></li>
+          <li><a href="http://www.mammaluciarestaurants.com/"><img src="http://www.cherryblossom.org/images/ads/2019/mammaLucia19.gif" width="202" height="52" alt=""/></a></li>
+		<li><a href="http://www.medstarsportsmedicine.org/" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2016/medstar_b.gif" alt="MedStar" width="202" height="52" border="0" /></a></li>
+		<li><a href="https://www.oldoxbrewery.com/" target="_blank"><img src="../images/ads/2018/oldox.jpg" width="202" height="52" alt=""/></a></li>
+		<li><a href="https://parkmobile.io/" target="_blank"><img src="../images/ads/2019/ParkMobile_bl.png" width="202" height="52" alt=""/></a></li>
+		<li><a href="https://www.peets.com/" target="_blank"><img src="../images/ads/2019/peets_icedesp_logo_bl.jpg" width="202" height="52" alt=""/></a></li>
+		
+	    <li><a href="http://www.potomacriverrunning.com/" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2015/pr2014_b.gif" width="202" height="52" border="0"></a></li>
+	    
+  
+        <li><a href="http://suburbansolutions.com/" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2016/sub_sol_b.gif" alt="Suburban Solutions" width="202" height="52" border="0" /></a></li>
+        <li><a href="http://www.underarmour.com"><img src="http://www.cherryblossom.org/images/ads/2017/under_armour_b.gif" width="202" height="52" alt=""/></a></li>
+			<li><a href="https://unionpubdc.com/" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2019/Union_Pub_ Logo_bl.jpg" width="202" height="52" alt=""/></a></li>
+		<li><a href="http://www.ups.com" target="_blank"><img src="http://www.cherryblossom.org/images/ads/2019/ups_br_bl.jpg" width="202" height="52" alt=""/></a></li>	
+        </ul></td>
+      </tr>
+    </table>
+
+</div>
+<div id="copyright">
+    <p class="alignleft">Copyright 2019 Credit Union Cherry Blossom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.cherryblossom.org/aboutus/privacy.php">Privacy Policy</a></p>
+    <p class="alignright"> <a href="http://www.dgdesignonline.com" title="Web Design &amp; Development by DG Design" target="_blank">Web Design by DG Design</a></p>
+  </div>
+<!-- end of footer -->
+</body>
+</html>
