@@ -1,0 +1,173 @@
+---
+title: "Web Scraping of Cherry Blossom Runs"
+author: "Shon Mohsin"
+date: "June 1, 2019"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+## Introduction
+The results of the Cerry Blossom Ten Mile Run a available at http://www.cherryblossom.org/. For this paper we do a step-by-step analysis of how to web-scrape the run time data from this website. We outline the steps to get the data from the website, format the data for initial data manipulation. Afterwards, we answer Question 17 from Chapter 2 of Data Sciene in R; Nolan et al.
+
+## Background
+Question 17 of Data Science in R asks the following:
+ "In Section 2.7, we discovered that the HTML file for the male 2000 results was so poorly formatted that htmlParse() was unable to read it to allow us to extract the text table from the <pre> tag. In this exercise, we programmatically edit this HTML file so that we can use htmlParse() as desired. To do this, begin by reading the HTML file located at http://www.cherryblossom.org/cb003m.htm using readLines(). Carefully examine the HTML displayed in Section 2.7 and come up with a plan for correcting it. Consider whether you want to drop <font>s or close them properly. Once you have fixed the problem so that the <pre> tag contains the text table, pass your corrected HTML to htmlParse(). You may want to use a text connection to do this rather than writing the file to disk and reading it in."
+ 
+TO accomplish this, we must fist scrape the data from the website. Then we edit the HTML file.
+
+We then consider if we want to drop <font>s or close them.  
+
+After this decision, we pass the corrected HTML to the htmlParse() function by using text connection. 
+
+
+## Method
+The HTML of the cherryblossom website for male 2000 results is shown in figure 1. Before we can get to the question of interest, we must first import the data from the website. Our goal is to create a function that we can use to extract all the men's runtimes from 1999 up to the year 2012 into a single data object in R. Doing this manually would be a cumbersome process, so we will first test on a single year's data, and then base the function off of this year, and apply it systemmatically to the span from 1999 to 2011.
+
+<insert figure 1 here>
+
+We first read in the data for the 2012 results using the readline() function. 
+```{r}
+library(XML)
+ubase = "http://www.cherryblossom.org/"
+url = paste(ubase, "results/2012/2012cucb10m-m.htm", sep = "")
+doc = htmlParse(url)
+```
+
+Before we proceed with the analysis, a few observations can be made about the data from observing the html code in figure 1. The 9th line of data corresponds to the column headers. We can use this line to create our column headers. 
+
+On Columns headers:
+Place- The finishing place. 
+Div /Tot - not evident what this column represents. 
+Name - The name of the male participant
+Ag - the Age of the participant.
+Hometown - The hometown or country of the participant. 
+5 Mile - The time the participant crosses the 5 mile mark.
+Gun Tim - The time to finish the race from the moment the gun goes off. 
+Net Tim - The time to finish the race from when the participant crosses the start line to the finish line. 
+Pace - The average time taken to complete a mile.
+
+We see that the actual records are divided from the column headings by a series of "=" signs at line 10. The records begin at line 11. Each line is contained by parenthesis signs. We can use this as a marker to separate the records into individual data records. In the "Net Tim" column, some records end with a "#" or an "*" which we will have to strip from the data. From the source data, at the end we see that  "# Under USATF OPEN guideline" and     
+"* Under USATF Age-Group guideline" are provided which explain the markings in the Net Tim.
+
+Since we do not need lines 1 and 2 of the data, we choose to not import it into our R object. 
+
+Our data of interest are contained between <pre> and </pre> tags, so that is what we will initially extract from "doc" data object we created earlier to house the initial data. We run the text through htmlParse() to read the html text into an R object for further manipulation. 
+
+We extract the text content of the <pre> node in the document by using an XPath expression. The getNodeSet() function returns a list of elements that correspond to the //pre nodes in the document. Since there is only one, everything after the //pre will be kept in the object. Next the function xmlValue() is used extract the values into the txt object.
+```{r}
+preNode = getNodeSet (doc, "//pre")
+txt = xmlValue(preNode[[1]])
+```
+
+We look at the number of strings in out txt data object and observe 100 of the object using the substr() function which is used to extract or replace substrings of a character vector. In this instance, we use it to extract 100 place values in the beginning of txt object. We also use the nchar() function, which is used to count the number of chars in a vector to see the last 50 characters of the txt object. 
+```{r}
+nchar(txt)
+substr(txt,1,100)
+substr(txt, nchar(txt)-50, nchar(txt))
+```
+
+We observe that "\r\n" can be used to split the currently continous object into discrete  records using the strsplit() function, which splits the elements of a character vector into substrings according to the "\r\n" substring we pass it. We observe the length using the length() function. In the data of the els object, we see that the first 5 lines contain header information, and the last line is a record of a male runner. We have successfully converted the html text into our R data object. 
+```{r}
+els = strsplit(txt, "\\r\\n")[[1]]
+length(els)
+els[1:5]
+els [length(els)]
+```
+
+To extract the rest of the years, we must now take these steps and create a function we can use to programmatically create data objects from each of the years on the website. 
+
+```{r}
+extractResTable =
+  # Retrieve data from website, find preformatted text, and return character vector.
+  function(url)
+  {
+    doc = htmlParse(url)
+    preNode = getNodeSet(doc,"//pre")
+    txt = xmlValue(preNode[[1]])
+    els = strsplit(txt, "\r\n")[[1]]
+    return(els)
+  }
+```
+
+
+We test the created extractResTable() function on the 2012 men's results. We then compare the results to see if they are identical to the values in els that we got previously.  We get a true value, indicating that our function works as expected. 
+```{r}
+m2012 = extractResTable(url)
+identical(m2012,els)
+```
+
+Now we can proceed with trying to get all of the running data into our R object. We take all of the URLs an we can now vectorize the links to run through our extractRestTable() function.
+
+```{r}
+ubase = "http://www.cherryblossom.org/"
+urls = paste(ubase, "results/", 1999:2012, "/",
+1999:2012, "cucb10m-m.htm", sep = "")
+menTables = lapply(urls, extractResTable)
+```
+
+We get an error which brings us closer to the question of interest. We examine the error in detail by modifying our options to see where the error is occuring. 
+```{r}
+options(error = recover)
+menTables = lapply(urls, extractResTable)
+```
+
+The above code when run  outputs the 1999 results as causing the function to fail.
+
+Selection: 2
+Called from: lapply(urls, extractResTable)
+Browse[1]> ls()
+[1] "doc"     "preNode" "url"    
+Browse[1]> url
+[1] "http://www.cherryblossom.org/results/1999/1999cucb10m-m.htm"
+Browse[1]> 
+
+We see that there is no <pre> node in the 1999 data, causing our function to fail. The issue is with the URL not pointing to the actual results. the actual URL is http://www.cherryblossom.org/cb99m.htm for this dataset. We must gather all the result urls individually and put them into a variable. We can then again try to read the results into R. 
+
+```{r}
+menURLs =
+c("cb99m.htm", "cb003m.htm", 
+  "results/2001/oof_m.html",
+  "results/2002/oofm.htm", 
+  "results/2003/CB03-M.HTM",
+  "results/2004/men.htm", 
+  "results/2005/CB05-M.htm",
+  "results/2006/men.htm", 
+  "results/2007/men.htm",
+  "results/2008/men.htm", 
+  "results/2009/09cucb-M.htm",
+  "results/2010/2010cucb10m-m.htm",
+  "results/2011/2011cucb10m-m.htm",
+  "results/2012/2012cucb10m-m.htm")
+urls = paste(ubase, menURLs, sep = "")
+urls[1:3]
+
+```
+
+We can now apply our function
+```{r}
+options = (error=recover)
+menTables = lapply(urls, extractResTable)
+names(menTables) = 1999:2012
+
+sapply(mentTables, length)
+```
+
+
+
+## Results
+
+
+## Conclusions
+
+
+## Future Work
+
+
+## References
