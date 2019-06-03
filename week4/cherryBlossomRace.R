@@ -431,7 +431,7 @@ createDF = function(Res, year, sex)
     useTime = Res[, 'time']
   
   
-  useTime = gsub("[#\\*[:blank:]]", "", useTime) # Remove # and * and blanks from time
+  useTime = gsub("[#\\*[:blank:]]", "", useTime) # Remove footnote symbols from time
   runTime = convertTime(useTime[useTime != ""])
   
   # Drop rows with no time
@@ -492,6 +492,6 @@ womenDF = mapply(
   createDF,
   womenResMat,
   year = 1999:2012,
-  sex = rep("W", length(years)),
+  sex = rep("F", length(years)),
   SIMPLIFY = FALSE
 )
