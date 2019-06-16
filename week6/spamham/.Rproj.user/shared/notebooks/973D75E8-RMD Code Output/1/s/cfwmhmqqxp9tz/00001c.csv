@@ -1,0 +1,2 @@
+"0","legend(x = 50, y = 0.4, fill = c(cols[2], cols[1]), "
+"0","       legend = c(""Classify Ham as Spam"", ""Classify Spam as Ham""), cex = 0.8, bty = ""n"")"

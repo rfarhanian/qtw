@@ -1,0 +1,7 @@
+"0","splitMessage = function(msg) {"
+"0","  splitPoint = match("""", msg)"
+"0","  header = msg[1:(splitPoint-1)]"
+"0","  body = msg[-(1:splitPoint)]"
+"0","  return(list(header = header, body = body))"
+"0","}"
+"0","sampleSplit = lapply(sampleEmail, splitMessage)"

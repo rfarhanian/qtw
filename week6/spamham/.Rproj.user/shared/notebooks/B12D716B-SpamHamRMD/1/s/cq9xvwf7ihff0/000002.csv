@@ -1,0 +1,12 @@
+"0","header = sampleSplit[[1]]$header"
+"0","grep(""Content-Type"", header)"
+"1","[1]"
+"1"," 46"
+"1","
+"
+"0","grep(""multi"", header)"
+"1","integer(0)
+"
+"0","grep(""multi"", tolower(header[46]))"
+"1","integer(0)
+"

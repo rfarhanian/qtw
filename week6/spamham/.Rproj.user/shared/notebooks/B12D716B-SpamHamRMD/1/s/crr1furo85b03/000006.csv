@@ -1,0 +1,5 @@
+"0","getBoundary = function(header){"
+"0","  boundaryIdx = grep(""boundary="", header)"
+"0","  boundary = gsub('""', """", header[boundaryIdx])"
+"0","  gsub("".*boundary= *([^;]*);?.*"",""\\1"", boundary)"
+"0","}"

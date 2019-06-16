@@ -1,0 +1,3 @@
+"0","indx = c(1:5, 15, 27, 68, 69, 329, 404, 427, 516, 852, 971) "
+"0","fn = list.files(fullDirNames[1], full.names = TRUE)[indx] "
+"0","sampleEmail = sapply(fn, readLines)"

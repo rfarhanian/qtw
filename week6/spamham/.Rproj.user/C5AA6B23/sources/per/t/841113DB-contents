@@ -1,0 +1,175 @@
+---
+title: "SpamHamProject"
+author: 'Shon Mohsin, Maryam Shahini, Ramin Farhanian '
+date: "June 15, 2019"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+  Spam email is a constant problem that floods our email inboxes daily. When spam is sent to a user's inbox, usually there are filters in place tha analyze the message and classify it as spam or not spam (we refer to as ham). Ham messages are included in the user's inbox and spam is labelled and quarentined. In this paper we create a filter that can classify between spam and ham emails. In addition, we answer question 20 from "Data Science in R" from Nolan et al. 
+
+# Background
+  Our goal is to answer Question 20 and it's 4 parts from our book.
+  
+Question 20:
+  
+In Section 3.6.3 we used the test set that we had put aside to both select τ, the threshold for the log odds, and to evaluate the Type I and II errors incurred when we use this threshold. Ideally, we choose τ from another set of messages that is both independent of our training data and our test data. The method of cross-validation is designed to use the training set for training and validating the model. Implement 5-fold cross-validation to choose τ and assess the error rate with our training data. To do this, follow the steps: 
+
+  (a) Use the sample() function to permute the indices of the training set, and organize these permuted indices into 5 equal-size sets, called folds. 
+
+  (b) Foreachfold,takethecorrespondingsubsetfromthetrainingdatatouseasa‘test’ set. Use the remaining messages in the training data as the training set. Apply the functions developed in Section 3.6 to estimate the probabilities that a word occurs in a message given it is spam or ham, and use these probabilities to compute the log likelihood ratio for the messages in the training set. 
+
+  (c) Pool all of the LLR values from the messages in all of the folds, i.e., from all of the training data, and use these values and the typeIErrorRate() function to select a threshold that achieves a 1% Type I error. 
+
+  (d) Apply this threshold to our original/real test set and ﬁnd its Type I and Type II errors.
+  
+  Our dataset consists of over 9000 email messages that have been classified by SpamAssasin (http"//spamassasin.apache.org") which we will use to develop our filter. Once the initial exploration of the data is complete, we will then set forth in solving question 20 in our book. 
+
+
+# Exploratory Data Analysis
+Our first step is to load the data into R for analysis. We can view the directories where the messages are kept, classified into their respective folder. 
+```{r}
+spamPath = "data"
+list.dirs(spamPath, full.names = FALSE)
+```
+
+We take a look at the contents of the `easy_ham` and `spam_2` folder and see that the the directories look the same. According to the SpamAssasin website, the messages are named by a message number and their MD5 checksum, which is a unique identifier derived from the contents of the file. 
+```{r}
+head(list.files(path = paste(spamPath, "messages", "easy_ham", sep = .Platform$file.sep)))
+head(list.files(path = paste(spamPath, "messages", "spam_2", sep = .Platform$file.sep)))
+
+```
+
+There are 9353 files in the combined directories. Looking inside each directory, we observe that the files are not equally divided. 
+```{r}
+dirNames = list.files(path = paste(spamPath, "messages", sep = .Platform$file.sep))
+length(list.files(paste(spamPath, "messages", dirNames, sep = .Platform$file.sep)))
+sapply(paste(spamPath, "messages", dirNames, sep = .Platform$file.sep), function(dir) length(list.files(dir)) )
+
+
+```
+
+Now that we have verified file counts, we proceed with the task of importing the actual messages into R in a format appropriate for analysis. 
+```{r}
+fullDirNames = paste(spamPath, "messages", dirNames, sep = .Platform$file.sep)
+fileNames=list.files(fullDirNames[1], full.names=TRUE)
+msg = readLines(fileNames[1])
+head(msg, 10)
+```
+
+Next we set aside a selection of emails to use as test cases as we build our methodology. 
+```{r}
+indx = c(1:5, 15, 27, 68, 69, 329, 404, 427, 516, 852, 971) 
+fn = list.files(fullDirNames[1], full.names = TRUE)[indx] 
+sampleEmail = sapply(fn, readLines)
+```
+
+We must access the body of the message in order to extract the words contained in the message. We must also split the message into it's header and it's body. To do this, we use the `splitPoint` method.
+
+```{r}
+msg = sampleEmail[[1]]
+which(msg == "") 
+splitPoint = match("", msg)
+msg[ (splitPoint-2):(splitPoint+6)]
+```
+
+We can now create a function `splitMessage()` function that will output 2 vectors, composing of the header and body of the message. We apply the function to our `sampleEmail`
+```{r}
+splitMessage = function(msg) {
+  splitPoint = match("", msg)
+  header = msg[1:(splitPoint-1)]
+  body = msg[-(1:splitPoint)]
+  return(list(header = header, body = body))
+}
+
+sampleSplit = lapply(sampleEmail, splitMessage)
+```
+
+We next need to remove the attachments from the email if there are any. We can get the content type in the header. We can then use the content type to determine if there is an attachment in the file. 
+
+```{r}
+header = sampleSplit[[1]]$header
+grep("Content-Type", header)
+grep("multi", header)
+grep("multi", tolower(header[46]))
+```
+
+We can apply this `grep()` call to all the headers in the list of sample messages. Our expectation is a vector.
+```{r}
+headerList = lapply(sampleSplit, function(msg) msg$header)
+CTloc = sapply(headerList, grep, patter = "Content-Type")
+CTloc
+```
+
+We observe that the 7th element returned in integer of zero. To account for this, we can check for missing `Content-Type` field and return zero or NA so that we can work with a numeric vector. 
+```{r}
+sapply(headerList, function(header){
+  CTloc = grep("Content-Type", header)
+  if (length(CTloc) == 0) 
+    return (NA)
+  CTloc
+})
+```
+
+Now we check for attachments in our samples.
+```{r}
+hasAttach = sapply(headerList, function(header)
+  {
+  CTloc = grep("Content-Type", header)
+  if (length(CTloc)== 0) return(FALSE)
+  grepl("multi", tolower(header[CTloc]))
+  })
+hasAttach
+```
+
+Now that we have found the attachments, we need to extract the string from the messages that have attachments by using the `gsub()` function included in a new function `getBoundary`.
+
+```{r}
+
+
+
+```
+
+We create a `dropAttach()` function to drop email attachments. 
+
+
+We create the function `findMsgWords` to find the words and `cleanText` to lower the capital letters in our messages. 
+
+```
+
+
+
+We can combine all of the tasks of cleaning and preparing the messages into a few functions proceed with the data cleaning. 
+```{r}
+
+
+```
+
+
+We apply the functions to all out directories and create a logical vector based on the number of elements in each list and then combine the 5 lists into 1 list. 
+```{r}
+
+```
+
+
+
+# Method
+
+
+# Results
+
+
+# Discussion
+
+
+# Future Work
+
+
+# References

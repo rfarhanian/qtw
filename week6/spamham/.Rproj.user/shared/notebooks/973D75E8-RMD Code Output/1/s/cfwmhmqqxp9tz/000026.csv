@@ -1,0 +1,1 @@
+"0","text(tauFoldI + 20, 0.05, pos = 4, paste(""Type II Error = "", round(typeIIerror, digits = 2)), col = cols[1])"
